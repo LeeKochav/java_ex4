@@ -85,19 +85,18 @@ public class Main_Thread extends Thread {
             client_game.startGame();
             Algo_Game ag=null;
             if (mode == 1) {
-                //Algo_Game ag = new Algo_Game(game);
-                //ag.start();
+
                 ag=new Algo_Game(game);
             }
             int ind=0;
-            dt=30;
+            dt=100;
         try {
             while (client_game.isRunning()) {
                 if(mode==1)
                 {
                     ag.MoveRobots();
                 }
-                if(ind%5==0) {
+                if(ind%2==0) {
                     client_game.move();
                 }
                 this.game.Update();
@@ -122,7 +121,7 @@ public class Main_Thread extends Thread {
         }
         JOptionPane.showMessageDialog(null,this.game.getMy_game().toString(),"GAME OVER",JOptionPane.INFORMATION_MESSAGE);
         game_gui.setVisible(false);
-     //  client_game.sendKML(s);
+   //    client_game.sendKML(s);
         System.exit(0);
     }
 

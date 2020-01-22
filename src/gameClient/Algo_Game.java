@@ -31,8 +31,13 @@ public class Algo_Game {
 
     /**
      * This method allocates next robot's destination
+     * If the robot next node equals fruit node destination, invoke the use of the equation that making sure the robot will collect the fruit.
+     * Equation : dt=(n*w)/s
+     * n= (distance fruit source node && fruit actual location)/(distance fruit source node && fruit destination node)
+     * w= fruit's edge weight
+     * s= robot's speed
      */
-    public void MoveRobots() throws InterruptedException {
+    public void MoveRobots()  {
         int dest = -1;
         for (int i = 0; i < my_game.getRobot_size(); i++) {
             Robot robot = my_game.getRobots().get(i);
@@ -40,9 +45,8 @@ public class Algo_Game {
                 dest = nextNode(i);
                 Fruit fruit_dest=fruits_status.get(robot.getId());
 
-                 if(robot.getSpeed()>=2&& robot.getSrc() == fruit_dest.getEdge().getSrc()&&dest==fruit_dest.getEdge().getDest()) //invoke formula
+                 if(robot.getSrc() == fruit_dest.getEdge().getSrc()&&dest==fruit_dest.getEdge().getDest()) //invoke formula
                 {
-
                     node_data src = my_game.getGraph().getNode(fruit_dest.getEdge().getSrc());
                     node_data dst = my_game.getGraph().getNode(fruit_dest.getEdge().getDest());
                     double dist_src_fruit= src.getLocation().distance2D(fruit_dest.getLocation());
@@ -54,7 +58,7 @@ public class Algo_Game {
                     int new_dt = (int)((w*n/s)*100);
                     Main_Thread.dt= new_dt;
                 } else {
-                    Main_Thread.dt = 30;
+                    Main_Thread.dt = 100;
                 }
                 my_game.getMy_game().chooseNextEdge(i, dest);
 
@@ -96,7 +100,8 @@ public class Algo_Game {
     }
 
     /**
-     * Find the nearest fruit for each robot
+     * Find the nearest fruit for each robot.
+     * Fruit_status indicates if the fruit is available to be the target of the robot.
      * @param robot
      * @return
      */

@@ -62,9 +62,9 @@ public class MyGameGUI extends JFrame implements ActionListener, MouseListener {
         MenuBar menuBar = new MenuBar();
         Menu menu = new Menu("Game information");
         menu.setFont(new Font("deafult", Font.BOLD, 12));
-        MenuItem UserscoreForStage = new MenuItem("User rank for this stage");
-        MenuItem Userscore = new MenuItem("User rank for all stages");
-        MenuItem GameScore = new MenuItem("Game rank for all players");
+        MenuItem UserscoreForStage = new MenuItem("User score - current stage");
+        MenuItem Userscore = new MenuItem("User score - all stages");
+        MenuItem GameScore = new MenuItem("Game score - all players");
         UserscoreForStage.setFont(new Font("deafult", Font.BOLD, 12));
         Userscore.setFont(new Font("deafult", Font.BOLD, 12));
         GameScore.setFont(new Font("deafult", Font.BOLD, 12));
@@ -221,11 +221,11 @@ public class MyGameGUI extends JFrame implements ActionListener, MouseListener {
         String str=e.getActionCommand();
 
         switch (str) {
-            case "User rank for this stage":
+            case "User score - current stage":
                 showStageBestResults(Main_Thread.stage);
                 break;
 
-            case "User rank for all stages":
+            case "User score - all stages":
                 int id = 999;
 
                 try {
@@ -237,7 +237,7 @@ public class MyGameGUI extends JFrame implements ActionListener, MouseListener {
                 showUserResults(id);
                 break;
 
-            case "Game rank for all players":
+            case "Game score - all players":
                 showGameResults();
                 break;
             default:
@@ -293,6 +293,10 @@ public class MyGameGUI extends JFrame implements ActionListener, MouseListener {
 
     }
 
+    /**
+     * Using SQL query shows current stage best users score.
+     * @param stage
+     */
     private void showStageBestResults(int stage) {
         String[] columnNames = { "UserID", "LevelID", "score", "moves", "time" };
         JFrame frame1 = new JFrame("Stage "+stage+" Results  " );
@@ -316,6 +320,10 @@ public class MyGameGUI extends JFrame implements ActionListener, MouseListener {
         frame1.setVisible(true);
     }
 
+    /**
+     * Using SQL query shows for each stage the best score of the user.
+     * @param id
+     */
     private void showUserResults(int id) {
         String[] columnNames = { "UserID", "LevelID", "score", "moves", "time" };
         JFrame frame1 = new JFrame("My Game Results, Games Played: " + DataBase.gamesPlayed(id));
@@ -339,6 +347,10 @@ public class MyGameGUI extends JFrame implements ActionListener, MouseListener {
         frame1.setVisible(true);
     }
 
+    /**
+     * Using SQL query shows all users scores for all stages
+     * @param id
+     */
     private void showGameResults() {
         String[] columnNames = { "UserID", "LevelID", "score", "moves", "time" };
         JFrame frame1 = new JFrame("Game Results");

@@ -8,6 +8,7 @@ The main goal of the project is to:
 - Develop a logic for a game in which a group of robots must perform movement tasks (fruit collection) on a weighted graph.
 - Create KML files that exemplify the game in google earth.
 - Collect as many fruits as possible and perform minimum robots moves during limited time of the game.
+- Maintain users information using MYSQL database.
 
 ![alt text](resources/game_example.PNG "game_example")
 

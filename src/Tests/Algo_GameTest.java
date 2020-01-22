@@ -39,9 +39,8 @@ class Algo_GameTest {
         int ind=0;
         try {
             while (client_game.isRunning()) {
-                Thread.sleep(dt);
-                ind++;
-                game.Update();
+                algo_game.MoveRobots();
+
                 if(ind%2==0) {
 
                     List<String> rob = client_game.getRobots();
@@ -51,6 +50,9 @@ class Algo_GameTest {
                     }
                     client_game.move();
                 }
+                game.Update();
+                Thread.sleep(dt);
+                ind++;
 
             }
         }

@@ -43,7 +43,7 @@ public class KML_Logger {
                 "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n" +
                         "<kml xmlns=\"http://earth.google.com/kml/2.2\">\r\n" +
                         "  <Document>\r\n" +
-                        "    <name>" + "Game stage :"+this.stage + "</name>" +"\r\n"+
+                        "    <name>" + "Game stage :"+this.stage + " maze of waze"+ "</name>" +"\r\n"+
                         " <Style id=\"node\">\r\n" +
                         "      <IconStyle>\r\n" +
                         "        <Icon>\r\n" +
