@@ -79,8 +79,8 @@ public class Main_Thread extends Thread {
      */
     @Override
     public void run() {
-        int id = 313233769;
-        Game_Server.login(id);
+//        int id = 313233769;
+//        Game_Server.login(id);
             game_service client_game = this.game.getMy_game();
             client_game.startGame();
             Algo_Game ag=null;
@@ -122,7 +122,7 @@ public class Main_Thread extends Thread {
         }
         JOptionPane.showMessageDialog(null,this.game.getMy_game().toString(),"GAME OVER",JOptionPane.INFORMATION_MESSAGE);
         game_gui.setVisible(false);
-       client_game.sendKML(s);
+     //  client_game.sendKML(s);
         System.exit(0);
     }
 
